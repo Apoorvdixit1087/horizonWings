@@ -5,10 +5,12 @@ import com.horizonwings.horizonwings.model.Gender;
 import com.horizonwings.horizonwings.model.PreviouEducation;
 import com.horizonwings.horizonwings.model.RegisterModel;
 //import com.horizonwings.horizonwings.repository.RegisterRepository;
+import com.horizonwings.horizonwings.model.response.ApiResponse;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -26,7 +28,7 @@ public class RegisterService {
     private JavaMailSender javaMailSender;
 
 
-    public String registerStudent(RegisterModel  registerModel){
+    public ApiResponse<String> registerStudent(RegisterModel  registerModel){
         try {
 //        Student student=new Student(
 //                registerModel.getName(),
@@ -79,8 +81,9 @@ public class RegisterService {
         }
         catch (Exception e){
             log.error(e.getMessage());
+            return new ApiResponse<>(HttpStatusCode.valueOf(500),e.getMessage());
         }
-        return "Student Registered Successfully";
+        return new ApiResponse<>(HttpStatusCode.valueOf(200),"Student Registered Successfully");
     }
 
 }
