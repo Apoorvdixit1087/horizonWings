@@ -15,6 +15,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.nio.charset.StandardCharsets;
 
 @Service
@@ -76,6 +77,8 @@ public class RegisterService {
                     "Hitesh Chaudhary\n" +
                     "HorizonWings Overseas Education";
             helper.setText(text);
+            File file=new File("/home/apoorv-dixit/Desktop/New Folder 1/horizonWings/src/main/resources/static/Horizonwings Overseas Education.jpeg");
+            helper.addAttachment("Horizonwings Overseas Education.jpeg",file);
             javaMailSender.send(message);
             log.info(registerModel.toString());
         }
