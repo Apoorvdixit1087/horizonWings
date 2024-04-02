@@ -77,7 +77,7 @@ public class RegisterService {
                     "Hitesh Chaudhary\n" +
                     "HorizonWings Overseas Education";
             helper.setText(text);
-            File file=new File("/home/apoorv-dixit/Desktop/New Folder 1/horizonWings/src/main/resources/static/Horizonwings Overseas Education.jpeg");
+            File file=new File("src/main/resources/static/Horizonwings Overseas Education.jpeg");
             helper.addAttachment("Horizonwings Overseas Education.jpeg",file);
             javaMailSender.send(message);
             log.info(registerModel.toString());
