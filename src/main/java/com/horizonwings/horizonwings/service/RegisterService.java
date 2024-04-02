@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -29,6 +30,7 @@ public class RegisterService {
     private JavaMailSender javaMailSender;
 
 
+    @Async
     public ApiResponse<String> registerStudent(RegisterModel  registerModel){
         try {
 //        Student student=new Student(
